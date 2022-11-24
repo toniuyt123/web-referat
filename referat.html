@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Реферат - Малко Познати HTML тагове</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js"></script>
+</head>
+
+<body onload="init()">
+    <nav>
+        <a href="#tag-progress">progress</a>
+    </nav>
+    <section class="headerContainer">
+        <p>В този реферат ще може да се запознаете с някои малко популярни тагове в HTML.</p>
+        (например: progress, meter, blockquote, audio, output, picture, template, time, video, wbr)</p>
+    </section>
+    <section class="tagShowcaseContainer" id="tag-progress">
+        <h1>1. progress</h1>
+        <p>
+            Тагър &lt;progress&gt; се използва като индикатор за процеса на завършване на дадена задача. Обикновенно се
+            изобразява като лента за прогреса.
+            Специални атрибути на класа:
+        <ul>
+            <li>max - Показва колко трябва да бъде извършената работа, която progress елемента изобразява. Ако бъде
+                подаден трябва да е положително число. Стойност по подразбиране е 1.</li>
+            <li>value - Показва текущото състояние на извърпената работа. Трябва да бъде число между 0 и max. Ако този
+                атрибут не бъде подаден то тогава лентата на прогреса е неопределена. Тоест, показва че има дейност,
+                която се извършва в момента, но без индикация колко дълго ще отнеме. </li>
+        </ul>
+        Примерена лента генерирана от следния код:
+        <blockquote>
+            &lt;progress value="70" max="100">70 %&lt;/progress>
+        </blockquote>
+        </p>
+        <progress value="70" max="100">70 %</progress>
+        <p>А така изглежда неопределана лента:</p>
+        <progress max="100"></progress>
+        <p>
+            Един практически пример би бил да използваме progress за да покажем визуално процеса на зареждане на
+            определена част от сайта. Това може да стане
+            като използваме атрибутите aria-busy и aria-describeby.
+        </p>
+        <div aria-busy="true" aria-describedby="progress-bar" id="loading-region">
+            
+        </div>
+        <progress id="progress-bar" aria-label="Content loading…"></progress>
+    </section>
+    <section class="tagShowcaseContainer" id="tag-meter">
+        <h1>1. meter</h1>
+        <p>
+            Тагър &lt;meter&gt; изглежда като progress но служи малко по-различна цел. Използваме meter за да
+            репрезентираме някаква мярка или дробна стойност.
+            Например за да покажем текущото използване на диска или процент популация гласувала за даден кандидат. .
+            Специални атрибути на класа:
+        <ul>
+            <li>max и value по аналогия на progress</li>
+            <li>min - за meter имаме възможност да зададем и минимална стойност. Това също означава че value не е нужно
+                да е положително ами да е между min и max.
+                min и max стойнсоти по падрабиране са 0 и 1.
+            </li>
+            <li>low, high, optimum - тези три атрибута се използват за да сегментираме мярката на 3 зони - ниска, средна
+                и висока. Ниската зона е от min до low, средната от low до high, и високата от high до max. За да са
+                валидни тези стойности тр трябва да изпълняват естествени неравенста между тях:
+                min &le; low &le; high &le; max
+                optimum просто казва, коят стойност считаме за оптимална. Тя може да бъде навсякъде между min и max. Ако
+                е във високия регион това
+                ще значи че е по-добре мярката да показва високо и т.н.
+            </li>
+
+
+        </ul>
+        Примери:
+        <blockquote>
+            <meter value=6 max=8>6 blocks used (out of 8 total)</meter>
+            <meter value=0.75 low=0.1 high=0.8 optimum=1><img alt="75%" src="graph75.png"></meter>
+        </blockquote>
+        </p>
+    </section>
+    <section class="tagShowcaseContainer" id="tag-blockquote">
+        <h1>1. blockquote</h1>
+        <blockquote cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
+            <p>&lt;blockquote> елементът индикира, че вкарания в него текст е дълъг цитат. Обикновенно, визуалното
+                рендериране се представя чрез индентация. Специални атрибути:
+            <ul>
+                <li>cite - този атрибут указва URL към източника на цитата. Текстова репрезентация на източника може да
+                    бъде дадена с &ltcite> елемента както е направено по-долу в тази секция.</li>
+            </ul>
+
+            Целия горен текст се намира в blockquote.
+            </p>
+            <figcaption>—MDN web docs, <cite>The Block Quotation element</cite></figcaption>
+        </blockquote>
+    </section>
+    <section class="tagShowcaseContainer" id="tag-audio">
+        <h1>1. audio</h1>
+        <p>audio тагът ни позвоялва да вмъкваме звукове в нашите документи. Може да съдържа повече от един източника
+            като броъзерът сам ще избере най-подходящия.
+            Специални атрибути:
+        <ul>
+            <li>autoplay - булев атрибут, който казва дали искаме звучкът да започне при първа възможност без
+                потребителят да го е пуснал или да е заредил целия файл. Това често е досадно за потребителите и не се
+                използва.</li>
+            <li>controls, controlslist - ако controls атрибутът е на лице то потребителят ще може да контролира
+                изпълнението на звука с няколко контроли. Има бутон за започване, увеличаване/намаляне на звука, пауза и
+                т.н. Има възможност и да предоставим само част от конторлите използвайки controlslist.</li>
+        </ul>
+        </p>
+    </section>
+    <section class="tagShowcaseContainer" id="tag-output">
+        <h1>1. output</h1>
+        <p>
+            output служи за контейнер, в който сайта или янкое приложение може да вмъкне резултата от дадена калкулация действие.
+            Служи главно за добавяне на семантика към html кодът. 
+            Специални атрибути:
+            <ul>
+                <li>for - списък от id-та на елементи допринесли за резултатът от действието</li>
+                <li>form - може да асоциираме output с някоя форма като подадем нейното id тук. Това може да се прави и извън самата форма.</li>
+                <li>name - името на елемента. Използва се във <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements">form.elements</a></li>
+            </ul>
+        </p>
+    </section>
+    <section class="tagShowcaseContainer" id="tag-picture">
+        <h1>1. picture</h1>
+        <p>Някой път може да ни се наложи един img елемент да се променя взависимост от условия като големина, ориентация на екрана и т.н. 
+            picture елементът ни предлага лесен начин да постигнем това вместо да се налага да използваме JavaScript например.
+            В picture слага нула или повече source> елемента, които сочат към различни изочници на снимката, и един img>. Браузърът сам ще избере 
+            кой източник е най-подходящ и ако не намери такъв или не поддържа picture то ще избере по подразбиране това, което сме дали като img.
+            За различни източни може да задаваме условия използвайки type и media атрибутите. Type казва какъв тип е снимката, например png, jpg. 
+            Media съдържа media query. Повече за тях може да прочетете <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries">тук</a>.
+            Някои от често срещаните media query-та се използват за широчина на екрана или ориентация на устройството. Примери: 
+        </p>
+        <div class="example-paragraphs">
+            <picture>
+                <source srcset="img/short-cat.png"
+                        media="(max-width: 720px)">
+                <img src="img/cat.png" />
+            </picture>
+        </div>
+    </section>
+    <section class="tagShowcaseContainer" id="tag-template">
+        <h1>1. template</h1>
+    </section>
+    <section class="tagShowcaseContainer" id="tag-time">
+        <h1>1. time</h1>
+    </section>
+    <section class="tagShowcaseContainer" id="tag-video">
+        <h1>1. video</h1>
+    </section>
+    <section class="tagShowcaseContainer" id="tag-wbr">
+        <h1>1. wbr</h1>
+        <p>wbr представлява начин зауказване на възможност за пренасяне на дума. Представете си, че имаме някоя дълга
+            дума, която не се събира в някой елемент в браузъра. С wbr може да укажем точно на кои места да се пренеса
+            на следващ ред думата вместо да разчитаме на бразуира, които може да я пренесе по-друг начин или изобщо да
+            не я. Почти същия ефект може да се симулира и с т.нар. меко тире. Това е специален, който не се рендерира на
+            страница. Разликата е, че освен че думата ще бъде пренесена, ще виждаме и символ тире. Пише се по следния
+            начин: & shy; Този елемент няма специални атрибути. Примерено използване: </p>
+        <div class="example-paragraphs">
+            <p>Непротивоконституционствувателствувайте</p>
+            <p>Непротиво<wbr>конституцион<wbr>ствувател<wbr>ствувайте</p>
+            <p>Непротиво&shy;конституцион&shy;ствувател&shy;ствувайте</p>
+        </div>
+
+    </section>
+    <section class="tagShowcaseContainer">
+        <h1>1. Доразвиване за следваща версия на реферата</h1>
+        <p>За следващата версия на реферата смятам да се фокусирам върху подобрение на следните точки:
+        <ol>
+            <li>Допълване на информацията за всички тагове и подобрение на останали - както се вижда няколко за няколко
+                тага информацията е никаква или много оскъдна. Смятам да си ги попълня и разширя.</li>
+            <li>Подобрение на дизайна на реферата - искам да направя моя интерактивен реферат по-хубав. Също ще се
+                фокусирам върху това да структурам информацията по-добре за да е по-лесно разбираеми. Както и да дам
+                повече примери с код.</li>
+            <li>Добавяне на още някой таг - ще добавя информация и за някои други тагове исвен тези от заглавието на
+                темата</li>
+        </ol>
+        </p>
+    </section>
+    <section class="tagShowcaseContainer" id="tag-combined">
+        <h1>1. </h1>
+        <blockquote>
+            Нека вземем всичко научено дотук и за забавление го комбинираме навъднъж. Моля пуснете аудиото отдолу за да
+            започне шоуто.
+        </blockquote>
+        <audio controls src="media/song.mp3" id="show-song">
+
+        </audio>
+        <div id="showContainer">
+            <progress id="showProgress"></progress>
+            <video muted width="320" height="240" id="showVideo">
+                <source src="media/movie.mp4" type="video/mp4">
+                Броузърът ти не поддържа видео.
+            </video>
+            <div id="audio-meters">
+
+            </div>
+            <div id="show-captions">
+                
+            </div>
+        </div>
+    </section>
+    <!--
+            https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
+            https://html.spec.whatwg.org/multipage/form-elements.html#the-progress-element
+            https://www.geeksforgeeks.org/how-to-disable-scrolling-temporarily-using-javascript/
+            https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
+            https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote
+            https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr
+            https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture
+            https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output
+            https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements
+        -->
+</body>
+
+</html>
