@@ -5,30 +5,50 @@
     <title>Реферат - Малко Познати HTML тагове</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/main.js"></script>
+    <link rel="stylesheet" href="css/highlightStyles/default.min.css">
+    <script src="js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </head>
 
 <body onload="init()">
     <nav id="navbar">
-        <a href="#tag-progress">progress</a>
-        <a href="#tag-meter">meter</a>
-        <a href="#tag-blockquote">blockquote</a>
-        <a href="#tag-audio">audio</a>
-        <a href="#tag-output">output</a>
-        <a href="#tag-picture">picture</a>
-        <a href="#tag-template">template</a>
-        <a href="#tag-time">time</a>
-        <a href="#tag-video">video</a>
-        <a href="#tag-wbr">wbr</a>
-        <a href="#tag-future-development">Бъдещо развитие</a>
-        <a href="#tag-combined">Комбиниран пример</a>
-        <a href="#tag-sources">Източници</a>
+        <a id="nav-tag-prologue" href="#tag-prologue">Предговор</a>
+        <a id="nav-tag-progress" href="#tag-progress">progress</a>
+        <a id="nav-tag-meter" href="#tag-meter">meter</a>
+        <a id="nav-tag-blockquote" href="#tag-blockquote">blockquote</a>
+        <a id="nav-tag-audio" href="#tag-audio">audio</a>
+        <a id="nav-tag-output" href="#tag-output">output</a>
+        <a id="nav-tag-picture" href="#tag-picture">picture</a>
+        <a id="nav-tag-template" href="#tag-template">template</a>
+        <a id="nav-tag-time" href="#tag-time">time</a>
+        <a id="nav-tag-video" href="#tag-video">video</a>
+        <a id="nav-tag-wbr" href="#tag-wbr">wbr</a>
+        <a id="nav-tag-future-development" href="#tag-future-development">Бъдещо развитие</a>
+        <a id="nav-tag-combined" href="#tag-combined">Комбиниран пример</a>
+        <a id="nav-tag-sources" href="#tag-sources">Източници</a>
     </nav>
     <div id="page-container">
 
 
         <section class="headerContainer">
             <h1>Малко Познати HTML тагове</h1>
+            <h6>От Антонио Милев, ФН: 82074</h6>
         </section>
+
+        <section class="tagShowcaseContainer" id="tag-prologue">
+            <h1>0. Предговор</h1>
+            <p>Всички познаваме основните HTML тагове, с които построяваме нашите уеб страници. Тагове като
+                <code>&lt;p></code>,
+                <code>&lt;h1></code>, <code>&lt;a></code> вероятно присъстват във всеки един сайт. С развиването на HTML
+                обаче, биват добавяни
+                накои нови елементи, които не са толкова познати на голяма част от хората. Някои от тях носят полезна
+                семантична информация. Други пък улесняват процеси, които иначе бихме се мъчили да симулираме с
+                JavaScript. Оказва се, че нативния HTML разполага с ред функционалности, които макар и рядко използваеми е
+                хубаво да бъдат познавани. В този реферат ще ви запозная с една част от тези малко популярни HTML
+                тагове.
+            </p>
+        </section>
+
         <section class="tagShowcaseContainer" id="tag-progress">
             <h1>1. progress</h1>
             <p>
@@ -36,48 +56,80 @@
                 задача. Обикновенно
                 се
                 изобразява като лента за прогреса.
-                Специални атрибути на класа:
+            </p>
+
+            <p>Специални атрибути на класа:</p>
             <ul>
-                <li>max - Показва колко трябва да бъде извършената работа, която progress елемента изобразява. Ако бъде
+                <li><b>max</b> - Показва колко трябва да бъде извършената работа, която progress елемента изобразява.
+                    Ако бъде
                     подаден трябва да е положително число. Стойност по подразбиране е 1.</li>
-                <li>value - Показва текущото състояние на извърпената работа. Трябва да бъде число между 0 и max. Ако
+                <li><b>value</b> - Показва текущото състояние на извърпената работа. Трябва да бъде число между 0 и max.
+                    Ако
                     този
                     атрибут не бъде подаден то тогава лентата на прогреса е неопределена. Тоест, показва че има дейност,
                     която се извършва в момента, но без индикация колко дълго ще отнеме. </li>
             </ul>
+
             Примерена лента генерирана от следния код:
-            <blockquote>
-                &lt;progress value="70" max="100">70 %&lt;/progress>
-            </blockquote>
-            </p>
-            <progress value="70" max="100">70 %</progress>
-            <p>А така изглежда неопределана лента:</p>
-            <progress max="100"></progress>
+            <figure>
+                <div class="codeExample editableCode">
+                    <div class="codeContent">
+                        <pre><code class="language-html" contenteditable="true">&lt;progress value="70" max="100">70%&lt;/progress></code></pre>
+                    </div>
+                    <div class="codeResult">
+                        <progress value="70" max="100">70%</progress>
+                    </div>
+                </div>
+                <figcaption>Код 1.1 Интерактивен пример за progress елемент</figcaption>
+            </figure>
+
+            <p>А така изглежда неопределана лента. Виждаме един син сегмент, който се движи наляво надясно:</p>
+            <figure>
+                <div class="codeExample">
+                    <div class="codeContent">
+                        <pre><code class="language-html" contenteditable="true">&lt;progress max="100">&lt;/progress></code></pre>
+                    </div>
+                    <div class="codeResult">
+                        <progress max="100"></progress>
+                    </div>
+                </div>
+                <figcaption>Код 1.2 Пример за progress елемент с неопределан стойност</figcaption>
+            </figure>
+
             <p>
                 Един практически пример би бил да използваме progress за да покажем визуално процеса на зареждане на
                 определена част от сайта. Това може да стане
-                като използваме атрибутите aria-busy и aria-describeby.
+                като използваме атрибутите <code>aria-busy</code> и <code>aria-describeby</code>.
             </p>
-            <!--<div aria-busy="true" aria-describedby="progress-bar" id="loading-region">
-
-            </div>
-            <progress id="progress-bar" aria-label="Content loading…"></progress>-->
+            <figure>
+                <pre><code class="language-html">&lt;div aria-busy="true" aria-describedby="progress-bar" id="loading-region">
+    &lt;!-- Създържание, което се зарежда -->
+    &lt;/div>
+    &lt;progress id="progress-bar" aria-label="Създържанието се зарежда">&lt;/progress></code></pre>
+                <figcaption>Код 1.3 Използване на progress като допълнителна семантика за достъпност на сайта</figcaption>
+            </figure>
         </section>
+
         <section class="tagShowcaseContainer" id="tag-meter">
             <h1>2. meter</h1>
             <p>
-                Тагът &lt;meter&gt; изглежда като progress но служи малко по-различна цел. Използваме meter за да
+                Тагът <code>&lt;meter&gt;</code> изглежда като progress но служи малко по-различна цел. Използваме meter
+                за да
                 репрезентираме някаква мярка или дробна стойност.
-                Например за да покажем текущото използване на диска или процент популация гласувала за даден кандидат. .
-                Специални атрибути на класа:
+                Например за да покажем текущото използване на диска или процент популация гласувала за даден кандидат.
+            </p>
+            <p>Специални атрибути на класа:</p>
+            </p>
             <ul>
-                <li>max и value по аналогия на progress</li>
-                <li>min - за meter имаме възможност да зададем и минимална стойност. Това също означава че value не е
+                <li><b>max</b> и <b>value</b> по аналогия на progress</li>
+                <li><b>min</b> - за meter имаме възможност да зададем и минимална стойност. Това също означава че value
+                    не е
                     нужно
                     да е положително ами да е между min и max.
                     min и max стойнсоти по падрабиране са 0 и 1.
                 </li>
-                <li>low, high, optimum - тези три атрибута се използват за да сегментираме мярката на 3 зони - ниска,
+                <li><b>low, high, optimum</b> - тези три атрибута се използват за да сегментираме мярката на 3 зони -
+                    ниска,
                     средна
                     и висока. Ниската зона е от min до low, средната от low до high, и високата от high до max. За да са
                     валидни тези стойности тр трябва да изпълняват естествени неравенста между тях:
@@ -100,12 +152,15 @@
         <section class="tagShowcaseContainer" id="tag-blockquote">
             <h1>3. blockquote</h1>
             <blockquote cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
-                <p>&lt;blockquote> елементът индикира, че вкарания в него текст е дълъг цитат. Обикновенно, визуалното
-                    рендериране се представя чрез индентация. Специални атрибути:
+                <p><code>&lt;blockquote></code> елементът индикира, че вкарания в него текст е дълъг цитат. Обикновенно,
+                    визуалното
+                    рендериране се представя чрез индентация. </p>
+                <p>Специални атрибути на класа:</p>
                 <ul>
-                    <li>cite - този атрибут указва URL към източника на цитата. Текстова репрезентация на източника може
+                    <li><b>cite</b> - този атрибут указва URL към източника на цитата. Текстова репрезентация на
+                        източника може
                         да
-                        бъде дадена с &ltcite> елемента както е направено по-долу в тази секция.</li>
+                        бъде дадена с <code>&ltcite></code> елемента както е направено по-долу в тази секция.</li>
                 </ul>
 
                 Целия горен текст се намира в blockquote.
@@ -117,7 +172,8 @@
             <h1>4. audio</h1>
             <p>audio тагът ни позвоялва да вмъкваме звукове в нашите документи. Може да съдържа повече от един източника
                 като броъзерът сам ще избере най-подходящия.
-                Специални атрибути:
+            </p>
+            <p>Специални атрибути на класа:</p>
             <ul>
                 <li>autoplay - булев атрибут, който казва дали искаме звучкът да започне при първа възможност без
                     потребителят да го е пуснал или да е заредил целия файл. Това често е досадно за потребителите и не
@@ -136,7 +192,8 @@
                 output служи за контейнер, в който сайта или янкое приложение може да вмъкне резултата от дадена
                 калкулация действие.
                 Служи главно за добавяне на семантика към html кодът.
-                Специални атрибути:
+            </p>
+            <p>Специални атрибути на класа:</p>
             <ul>
                 <li>for - списък от id-та на елементи допринесли за резултатът от действието</li>
                 <li>form - може да асоциираме output с някоя форма като подадем нейното id тук. Това може да се прави и
@@ -184,26 +241,24 @@
                 корен "сянка" на неговия елемент родител. Повече за т.нар. "Shadow Dom" може да прочетете <a
                     href="https://web.dev/declarative-shadow-dom/">тук</a>. Пример за популиране на таблица:
             <p>HTML: <br>
-                <code>
-                        &lt;table id=&quot;producttable&quot;&gt;<br>
-                        &lt;thead&gt;<br>
-                          &lt;tr&gt;<br>
-                            &lt;td&gt;UPC_Code&lt;/td&gt;<br>
-                            &lt;td&gt;Product_Name&lt;/td&gt;<br>
-                          &lt;/tr&gt;<br>
-                        &lt;/thead&gt;<br>
-                        &lt;tbody&gt;<br>
-                          &lt;!-- Тук вкарваме данните от темплейта --&gt;<br>
-                        &lt;/tbody&gt;<br>
-                      &lt;/table&gt;<br>
-                      <br>
-                      &lt;template id=&quot;productrow&quot;&gt;<br>
-                        &lt;tr&gt;<br>
-                          &lt;td class=&quot;record&quot;&gt;&lt;/td&gt;<br>
-                          &lt;td&gt;&lt;/td&gt;<br>
-                        &lt;/tr&gt;<br>
-                      &lt;/template&gt;<br>
-                    </code>
+            <pre><code class="language-html">&lt;table id=&quot;producttable&quot;&gt;
+&lt;thead&gt;
+    &lt;tr&gt;
+    &lt;td&gt;UPC_Code&lt;/td&gt;
+    &lt;td&gt;Product_Name&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+    &lt;!-- Тук вкарваме данните от темплейта --&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;template id=&quot;productrow&quot;&gt;
+&lt;tr&gt;
+    &lt;td class=&quot;record&quot;&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/template&gt;</code></pre>
             </p>
             </p>
         </section>
@@ -212,9 +267,12 @@
             <p>Този елемент се използва за да посочим някакъв спефицичен период от време във машинно разбираем език.
                 Това допринася за по одбри резултати при търсене както и дава възможност за някои специални
                 функционалности. Например може автоматично да доабвим събитие към календара на потребителя. Този елемент
-                не бива да се използва за дати преди началото на Грегорианския календар. Специални атрибути:</p>
+                не бива да се използва за дати преди началото на Грегорианския календар. </p>
+            <p>Специални атрибути на класа:</p>
+            </p>
             <ul>
-                <li>datetime - с този атрибут посочваме времето в машинно разбираем формат. Ако атрибутът липсва то за
+                <li><b>datetime</b> - с този атрибут посочваме времето в машинно разбираем формат. Ако атрибутът липсва
+                    то за
                     негова стойност ще се вземе текстът, то тогава &lt;time> не може да има деца елементи, и за стойнсот
                     на datetime ще се вземе текстът вътре във съдържанието на time.</li>
             </ul>
@@ -224,12 +282,17 @@
         </section>
         <section class="tagShowcaseContainer" id="tag-video">
             <h1>9. video</h1>
-            <p>&lt;video> вмъква във страницаата медия плейър, който поддържа видеа. Може д абъде изпзолзвам и за аудио, но за звуци вече видяхме, че има по-подходящ елемент. Подобно на аудио и тук имаме специални атрибути:</p>
+            <p>&lt;video> вмъква във страницаата медия плейър, който поддържа видеа. Може д абъде изпзолзвам и за аудио,
+                но за звуци вече видяхме, че има по-подходящ елемент. Подобно на аудио и тук имаме </p>
+            <p>Специални атрибути на класа:</p>
+            </p>
             <ul>
                 <li>src - показва източника на видеото</li>
                 <li>autoplay - ако този атрибут е на лице видеото ще стартира веднага щом е възможно.</li>
-                <li>controls, controlslist - аналог на аудио елемента. Тук имаме контроли като възможност за зитегляне на видеото (nodownload), пълен екран (nofullscreen) и други.</li>
-                <li>loop - ако е този атрибут е на лице, то видето ще се върти безкрайно в цикъл след като приключи.</li>
+                <li>controls, controlslist - аналог на аудио елемента. Тук имаме контроли като възможност за зитегляне
+                    на видеото (nodownload), пълен екран (nofullscreen) и други.</li>
+                <li>loop - ако е този атрибут е на лице, то видето ще се върти безкрайно в цикъл след като приключи.
+                </li>
                 <li>muted - този атрибут казва на video да пусне видеото без звук</li>
                 <li>width, height - ясни атрибути. Казват пирочината и височината на картината на видеото.</li>
             </ul>
@@ -246,7 +309,7 @@
                 рендерира на
                 страница. Разликата е, че освен че думата ще бъде пренесена, ще виждаме и символ тире. Пише се по
                 следния
-                начин: & shy; Този елемент няма специални атрибути. Примерено използване: </p>
+                начин: & shy; Този елемент няма Специални атрибути. Примерено използване: </p>
             <div class="example-paragraphs">
                 <p>Непротивоконституционствувателствувайте</p>
                 <p>Непротиво<wbr>конституцион<wbr>ствувател<wbr>ствувайте</p>
@@ -326,6 +389,7 @@
                 </div>
             </div>
         </section>
+
         <section class="tagShowcaseContainer" id="tag-sources">
             <h1>13. Източници</h1>
             <p>
@@ -356,9 +420,12 @@
                 <a href="https://www.geeksforgeeks.org/how-to-disable-scrolling-temporarily-using-javascript/">[11]</a>
                 How to disable scrolling temporarily using JavaScript ?, GeekForGeeks, 15 Nov 2022<br>
                 <a href="https://blog.logrocket.com/audio-visualizer-from-scratch-javascript/">[12]</a>
-                Write an audio visualizer from scratch with vanilla JavaScript, Iskander Samatov, May 12, 2022
+                Write an audio visualizer from scratch with vanilla JavaScript, Iskander Samatov, May 12, 2022<br>
+                <a href="https://highlightjs.org/">[13]</a> За оцветяването на примерите с код е използвана библиотека
+                highlight.js, Версия 11.7.0, 23 Nov 2022
             </p>
         </section>
+
     </div>
 
 

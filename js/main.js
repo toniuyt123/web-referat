@@ -87,6 +87,28 @@ function init() {
         document.getElementById('tag-combined').scrollIntoView()
         disableScroll();
     };
+
+    const scrollItems = document.getElementsByClassName('tagShowcaseContainer');
+    window.addEventListener("scroll", () => {
+        for (const elem of scrollItems) {
+            if (elem.offsetTop <= window.scrollY) {
+                document.querySelectorAll('#navbar a').forEach((link) => {
+                    link.classList.remove('active');
+                });
+
+                document.getElementById(`nav-${elem.id}`).classList.add('active');
+            }
+        }
+
+    });
+
+    document.querySelectorAll('.editableCode').forEach((elem) => {
+        console.log()
+        elem.getElementsByTagName('code')[0].addEventListener('input', function (e) {
+            console.log(elem.getElementsByClassName('codeResult'))
+            elem.getElementsByClassName('codeResult')[0].innerHTML = this.innerHTML.replace(/<[^>]+>/g, '').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+        });
+    });
 }
 
 

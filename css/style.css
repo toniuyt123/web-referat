@@ -11,6 +11,12 @@
 .headerContainer {
     margin-bottom: 30px;
     text-align: center;
+    font-size: 2em;
+}
+
+.headerContainer h1, .headerContainer h6 {
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
 
 .example-paragraphs {
@@ -26,7 +32,8 @@
     display: inline-block;
     font-size: 14px;
     font-family: Arial;
-    top: 20px;
+    top: 40px;
+    left: 40px;
     position: fixed;
     width: 15%;
 }
@@ -41,13 +48,18 @@
     cursor: pointer;
 }
 
-#navbar a:hover {
+#navbar a.active {
+    color: white;
+    background-color: green;
+}
+
+#navbar a:not(.active):hover {
     background-color: rgb(210, 224, 219);
 }
 
 #page-container {
-    width:80%;
-    margin-left: 15%;
+    width: 70%;
+    margin-left: 20%;
     padding-left: 15px;
 }
 
@@ -56,7 +68,8 @@
     padding: 15px;
     border-radius: 5px;
     background-color: azure;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    font-size: 1.2em;
 }
 
 .tagShowcaseContainer h1 {
@@ -104,4 +117,23 @@ code {
 
 body {
     text-align: justify;
+}
+
+.codeExample {
+    overflow: hidden;
+}
+
+.codeContent {
+    width: 50%;
+    float: left;
+}
+
+.codeResult {
+    width: 50%;
+    float: left;
+}
+
+figcaption {
+    font-size: 0.9em;
+    font-style: italic;
 }
