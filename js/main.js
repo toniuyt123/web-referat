@@ -1,12 +1,12 @@
 const showCaptions = [
-    ['Горните инструкции на това наистина не', 'вероятно шоу бе написано в blockquote.'],
-    ['audio и video таговете са ясни. Ще си вър', 'нете възможността за скролиране като свършат.'],
-    ['С progress можем да наблюдаваме го', 'лемина от видеото сме изгледали до момента'],
-    ['Meter ни дава забавна визуализация на звука.', ''],
-    ['Оставащото време е output от ги', 'гантската дължината и текущото време на видеото.'],
-    ['Времето на приключване е в тага time. В него сме сложили и datetime със ISO формат на датата', ''],
-    ['За тези надписи се възползваме от ю', 'мрука на елемента template.'],
-    ['Благодарение на всички тагове този ъп', 'сурд е възможен.'],
+    ['Горните инструкции на това наистина ', 'не', 'вероятно шоу бе написано в blockquote.'],
+    ['audio и video таговете са ясни. Ще си ', 'вър', 'нете възможността за скролиране като свършат.'],
+    ['С progress можем да наблюдаваме ', 'го', 'лемина от видеото сме изгледали до момента'],
+    ['Meter ни дава забавна визуализация ', 'на', 'звука.'],
+    ['Оставащото време е output от ', 'ги', 'гантската дължината и текущото време на видеото.'],
+    ['Времето на приключване е в тага time. ', 'В', ' него сме сложили и datetime със ISO формат на датата'],
+    ['За тези надписи се възползваме от ', 'ю', 'мрука на елемента template.'],
+    ['Благодарение на всички тагове този ', 'ъп', 'сурд е възможен.'],
 ];
 
 function init() {
@@ -76,7 +76,8 @@ function init() {
 
             const p = captionsTemplate.content.cloneNode(true).querySelectorAll('p')[0]; //document.createElement("p");
             p.prepend('-'+showCaptions[captionsIndex][0]);
-            p.append(showCaptions[captionsIndex][1]);
+            p.append(showCaptions[captionsIndex][2]);
+            p.getElementsByClassName('marked-word')[0].innerHTML = showCaptions[captionsIndex][1];
             captionsIndex++;
             captionsContainer.append(p);
         }, 3000);
@@ -103,11 +104,14 @@ function init() {
     });
 
     document.querySelectorAll('.editableCode').forEach((elem) => {
-        console.log()
         elem.getElementsByTagName('code')[0].addEventListener('input', function (e) {
             console.log(elem.getElementsByClassName('codeResult'))
             elem.getElementsByClassName('codeResult')[0].innerHTML = this.innerHTML.replace(/<[^>]+>/g, '').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
         });
+    });
+
+    document.querySelectorAll('.codeContent').forEach((elem) => {
+        elem.style.height = `${elem.parentNode.scrollHeight}px`;
     });
 }
 
@@ -119,8 +123,6 @@ function disableScroll() {
   
     // if any scroll is attempted, set this to the previous value
     window.onscroll = function(e) {
-
-        console.log(e);
        // window.scrollTo(scrollLeft, scrollTop);
         document.getElementById('tag-combined').scrollIntoView();
     };

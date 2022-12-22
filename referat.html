@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Реферат - Малко Познати HTML тагове</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/main.js"></script>
@@ -12,20 +13,19 @@
 
 <body onload="init()">
     <nav id="navbar">
-        <a id="nav-tag-prologue" href="#tag-prologue">Предговор</a>
-        <a id="nav-tag-progress" href="#tag-progress">progress</a>
-        <a id="nav-tag-meter" href="#tag-meter">meter</a>
-        <a id="nav-tag-blockquote" href="#tag-blockquote">blockquote</a>
-        <a id="nav-tag-audio" href="#tag-audio">audio</a>
-        <a id="nav-tag-output" href="#tag-output">output</a>
-        <a id="nav-tag-picture" href="#tag-picture">picture</a>
-        <a id="nav-tag-template" href="#tag-template">template</a>
-        <a id="nav-tag-time" href="#tag-time">time</a>
-        <a id="nav-tag-video" href="#tag-video">video</a>
-        <a id="nav-tag-wbr" href="#tag-wbr">wbr</a>
-        <a id="nav-tag-future-development" href="#tag-future-development">Бъдещо развитие</a>
-        <a id="nav-tag-combined" href="#tag-combined">Комбиниран пример</a>
-        <a id="nav-tag-sources" href="#tag-sources">Източници</a>
+        <a id="nav-tag-prologue" href="#tag-prologue">0. Предговор</a>
+        <a id="nav-tag-progress" href="#tag-progress">1. progress</a>
+        <a id="nav-tag-meter" href="#tag-meter">2. meter</a>
+        <a id="nav-tag-blockquote" href="#tag-blockquote">3. blockquote</a>
+        <a id="nav-tag-audio" href="#tag-audio">4. audio</a>
+        <a id="nav-tag-output" href="#tag-output">5. output</a>
+        <a id="nav-tag-picture" href="#tag-picture">6. picture</a>
+        <a id="nav-tag-template" href="#tag-template">7. template</a>
+        <a id="nav-tag-time" href="#tag-time">8. time</a>
+        <a id="nav-tag-video" href="#tag-video">9. video</a>
+        <a id="nav-tag-wbr" href="#tag-wbr">10. wbr</a>
+        <a id="nav-tag-combined" href="#tag-combined">11. Комбиниран пример</a>
+        <a id="nav-tag-sources" href="#tag-sources">12. Източници и списъци</a>
     </nav>
     <div id="page-container">
 
@@ -43,9 +43,12 @@
                 обаче, биват добавяни
                 накои нови елементи, които не са толкова познати на голяма част от хората. Някои от тях носят полезна
                 семантична информация. Други пък улесняват процеси, които иначе бихме се мъчили да симулираме с
-                JavaScript. Оказва се, че нативния HTML разполага с ред функционалности, които макар и рядко използваеми е
+                JavaScript. Оказва се, че нативния HTML разполага с ред функционалности, които макар и рядко използваеми
+                е
                 хубаво да бъдат познавани. В този реферат ще ви запозная с една част от тези малко популярни HTML
-                тагове.
+                тагове.<br><br> *В този реферат ще видите някои примери код, които могат да бъдат редактирани и в реално
+                време да видите промяната си. Може да разпознаети тези примери по това, че имат тъмно сива лента от
+                ляво, както и по техния надпис, на който ще пише, че примерът е интерактивен.
             </p>
         </section>
 
@@ -87,7 +90,7 @@
             <figure>
                 <div class="codeExample">
                     <div class="codeContent">
-                        <pre><code class="language-html" contenteditable="true">&lt;progress max="100">&lt;/progress></code></pre>
+                        <pre><code class="language-html">&lt;progress max="100">&lt;/progress></code></pre>
                     </div>
                     <div class="codeResult">
                         <progress max="100"></progress>
@@ -104,16 +107,17 @@
             <figure>
                 <pre><code class="language-html">&lt;div aria-busy="true" aria-describedby="progress-bar" id="loading-region">
     &lt;!-- Създържание, което се зарежда -->
-    &lt;/div>
-    &lt;progress id="progress-bar" aria-label="Създържанието се зарежда">&lt;/progress></code></pre>
-                <figcaption>Код 1.3 Използване на progress като допълнителна семантика за достъпност на сайта</figcaption>
+&lt;/div>
+&lt;progress id="progress-bar" aria-label="Съдържанието се зарежда">&lt;/progress></code></pre>
+                <figcaption>Код 1.3 Използване на progress като допълнителна семантика за достъпност на сайта <a
+                        href="#tag-sources">[1]</a></figcaption>
             </figure>
         </section>
 
         <section class="tagShowcaseContainer" id="tag-meter">
             <h1>2. meter</h1>
             <p>
-                Тагът <code>&lt;meter&gt;</code> изглежда като progress но служи малко по-различна цел. Използваме meter
+                Тагът <code>&lt;meter&gt;</code> изглежда като progress, но служи малко по-различна цел. Използваме meter,
                 за да
                 репрезентираме някаква мярка или дробна стойност.
                 Например за да покажем текущото използване на диска или процент популация гласувала за даден кандидат.
@@ -122,224 +126,442 @@
             </p>
             <ul>
                 <li><b>max</b> и <b>value</b> по аналогия на progress</li>
-                <li><b>min</b> - за meter имаме възможност да зададем и минимална стойност. Това също означава че value
+                <li><b>min</b> - за meter имаме възможност да зададем и минимална стойност. Това също означава, че value
                     не е
                     нужно
                     да е положително ами да е между min и max.
-                    min и max стойнсоти по падрабиране са 0 и 1.
+                    Стойностите им по подразбиране са 0 и 1.
                 </li>
-                <li><b>low, high, optimum</b> - тези три атрибута се използват за да сегментираме мярката на 3 зони -
+                <li><b>low, high, optimum</b> - тези три атрибута се използват, за да сегментираме мярката на 3 зони -
                     ниска,
                     средна
                     и висока. Ниската зона е от min до low, средната от low до high, и високата от high до max. За да са
-                    валидни тези стойности тр трябва да изпълняват естествени неравенста между тях:
+                    валидни тези стойности трябва да изпълняват естествени неравенста между тях:
                     min &le; low &le; high &le; max
-                    optimum просто казва, коят стойност считаме за оптимална. Тя може да бъде навсякъде между min и max.
+                    optimum просто казва коя стойност считаме за оптимална. Тя може да бъде навсякъде между min и max.
                     Ако
                     е във високия регион това
-                    ще значи че е по-добре мярката да показва високо и т.н.
+                    ще значи, че е по-добре мярката да показва високо и т.н.
                 </li>
 
 
             </ul>
-            Примери:
-            <blockquote>
-                <meter value=6 max=8>6 blocks used (out of 8 total)</meter>
-                <meter value=0.75 low=0.1 high=0.8 optimum=1><img alt="75%" src="graph75.png"></meter>
-            </blockquote>
-            </p>
+            <p>Пример:</p>
+            <figure>
+                <div class="codeExample editableCode">
+                    <div class="codeContent">
+                        <pre><code class="language-html" contenteditable="true">&lt;meter value=1 max=4>1 от 4 ядра се използват&lt;/meter>
+&lt;meter value=0.75 low=0.1 high=0.8 optimum=1>&lt;/meter></code></pre>
+                    </div>
+                    <div class="codeResult">
+                        <meter value=1 max=4>1 от 4 ядра се използват</meter>
+                        <meter value=0.75 low=0.1 high=0.8 optimum=1></meter>
+                    </div>
+                </div>
+                <figcaption>Код 2.1 Интерактивен пример на meter елемент.</figcaption>
+            </figure>
         </section>
         <section class="tagShowcaseContainer" id="tag-blockquote">
             <h1>3. blockquote</h1>
-            <blockquote cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
-                <p><code>&lt;blockquote></code> елементът индикира, че вкарания в него текст е дълъг цитат. Обикновенно,
-                    визуалното
+            <p><code>&lt;blockquote></code> елементът индикира, че вкарания в него текст е дълъг цитат. Обикновенно,
+                визуалното
                     рендериране се представя чрез индентация. </p>
                 <p>Специални атрибути на класа:</p>
                 <ul>
                     <li><b>cite</b> - този атрибут указва URL към източника на цитата. Текстова репрезентация на
                         източника може
                         да
-                        бъде дадена с <code>&ltcite></code> елемента както е направено по-долу в тази секция.</li>
-                </ul>
+                        бъде дадена с <code>&ltcite></code> елемента, както е направено по-долу в тази секция.</li>
+                    </ul>
+            
 
-                Целия горен текст се намира в blockquote.
-                </p>
-                <figcaption>—MDN web docs, <cite>The Block Quotation element</cite></figcaption>
-            </blockquote>
+            <figure>
+                <div class="codeExample editableCode">
+                    <div class="codeContent">
+                        <pre><code class="language-html" contenteditable="true">&lt;figure>
+    &lt;blockquote cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
+        &lt;p>blockquote елементът индикира, че вкарания в него текст е дълъг цитат. Обикновенно,
+            визуалното рендериране се представя чрез индентация.&lt;/p>
+    &lt;/blockquote>
+    &lt;figcaption>—MDN web docs, &lt;cite>The Block Quotation element&lt;/cite>&lt;/figcaption>
+&lt;/figure></code></pre>
+                    </div>
+                    <div class="codeResult">
+                        <figure>
+                            <blockquote cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
+                                <p>blockquote елементът индикира, че вкарания в него текст е дълъг цитат. Обикновенно,
+                                    визуалното рендериране се представя чрез индентация.</p>
+                            </blockquote>
+                            <figcaption>—MDN web docs, <cite>The Block Quotation element</cite></figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <figcaption>Код 3.1 Интерактивен пример на blockquote елемент.</figcaption>
+            </figure>
         </section>
         <section class="tagShowcaseContainer" id="tag-audio">
             <h1>4. audio</h1>
-            <p>audio тагът ни позвоялва да вмъкваме звукове в нашите документи. Може да съдържа повече от един източника
-                като броъзерът сам ще избере най-подходящия.
+            <p><code>&lt;audio></code> тагът ни позволява да вмъкваме звуци в нашите документи. Може да съдържа повече
+                от един източник
+                като браузерът сам ще избере най-подходящия.
             </p>
             <p>Специални атрибути на класа:</p>
             <ul>
-                <li>autoplay - булев атрибут, който казва дали искаме звучкът да започне при първа възможност без
+                <li><b>src</b> - URL сочещ към аудио файла, който искаме да пуснем. Може да се използват и
+                    <code>source</code> елементи вместо това.</li>
+                <li><b>autoplay</b> - булев атрибут, който казва дали искаме звукът да започне при първа възможност без
                     потребителят да го е пуснал или да е заредил целия файл. Това често е досадно за потребителите и не
                     се
                     използва.</li>
-                <li>controls, controlslist - ако controls атрибутът е на лице то потребителят ще може да контролира
-                    изпълнението на звука с няколко контроли. Има бутон за започване, увеличаване/намаляне на звука,
-                    пауза и
-                    т.н. Има възможност и да предоставим само част от конторлите използвайки controlslist.</li>
+                <li><b>controls</b> - ако controls атрибутът е на лице, то потребителят ще може да контролира
+                    изпълнението на аудиото с няколко контроли. Има бутон за започване, увеличаване/намаляне на звука,
+                    пауза и т.н</li>
+                <li><b>controlslist</b> - Има възможност и да предоставим само част от контрoлите използвайки
+                    controlslist. Позволените стойности са <code>nodownload</code>, <code>nofullscreen</code> и
+                    <code>noremoteplayback</code>. Те съответно забраняват дадена функционалност. Може да се използват
+                    заедно като се подават разделни със празни полета.
+                </li>
+                <li><b>loop</b> - ако този атрибут е на лице, то аудиото ще се върти безкрайно в цикъл след като
+                    приключи.
+                </li>
+                <li><b>muted</b> - този атрибут казва на audio да се пусне без звук.</li>
+                <li><b>preload</b> - този атрибут може да ни помогне да направим по-добро изживяване за потребителя
+                    като предварително заредим аудиото преди да бъде пусната. Това ще намали риска от това то да забива
+                    ако потребителят има слаб интернет. Възможните стойности на този атрибут са: <br>- 'none': не
+                    зарежда
+                    нищо предварително. <br>- 'metadata': зарежда само мета данните <br>- 'auto' или празна стойност:
+                    зарежда цялото аудио<br> Стойностите по подразбиране на този атрибут варират от браузър до браузър.
+                    Препоръчително е
+                    да се използва metadata.</li>
             </ul>
-            </p>
+            <p>Пример:</p>
+            <figure>
+                <div class="codeExample editableCode">
+                    <div class="codeContent">
+                        <pre><code class="language-html" contenteditable="true">&lt;audio controls>
+    &lt;source src="media/audio.mp3" type="audio/mp3" />
+&lt;/audio></code></pre>
+                    </div>
+                    <div class="codeResult">
+                        <audio controls>
+                            <source src="media/audio.mp3" type="audio/mp3" />
+                        </audio>
+                    </div>
+                </div>
+                <figcaption>Код 4.1 Интерактивен пример на audio елемент.</figcaption>
+            </figure>
+            <p>Аудио тагът има и множество събития, към които може да закачаме функции. Те се припокриват 1 към 1 с тези
+                на video елементът, за когото ще говорим след малко. Там ще разгледаме някои от тях.</p>
         </section>
+
         <section class="tagShowcaseContainer" id="tag-output">
             <h1>5. output</h1>
             <p>
-                output служи за контейнер, в който сайта или янкое приложение може да вмъкне резултата от дадена
-                калкулация действие.
+                <code>&lt;output></code> служи за контейнер, в който сайта или някое приложение може да вмъкне резултата
+                от дадена
+                калкулация или действие.
                 Служи главно за добавяне на семантика към html кодът.
             </p>
             <p>Специални атрибути на класа:</p>
             <ul>
-                <li>for - списък от id-та на елементи допринесли за резултатът от действието</li>
-                <li>form - може да асоциираме output с някоя форма като подадем нейното id тук. Това може да се прави и
+                <li><b>for</b> - списък от id-та на елементи допринесли за резултатът от действието</li>
+                <li><b>form</b> - може да асоциираме output с някоя форма като подадем нейното id тук. Това може да се
+                    прави и
                     извън самата форма.</li>
-                <li>name - името на елемента. Използва се във <a
-                        href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements">form.elements</a>
+                <li><b>name</b> - името на елемента. Използва се във <a
+                        href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements"
+                        target="_blank">form.elements</a> API-то.
                 </li>
             </ul>
-            </p>
+            <p>Пример:</p>
+            <figure>
+                <div class="codeExample editableCode">
+                    <div class="codeContent">
+                        <pre><code class="language-html" contenteditable="true">&lt;form oninput="result.value=(parseInt(a.value)+parseInt(b.value))/2">
+    Average of &lt;input type="number" id="b" name="b" value="50" /> and
+    &lt;input type="number" id="a" name="a" value="10" /> =
+    &lt;output name="result" for="a b">30&lt;/output>
+&lt;/form></code></pre>
+                    </div>
+                    <div class="codeResult">
+                        <form oninput="result.value=(parseInt(a.value)+parseInt(b.value))/2">
+                            Average of <input type="number" id="b" name="b" value="50" /> and
+                            <input type="number" id="a" name="a" value="10" /> =
+                            <output name="result" for="a b">30</output>
+                        </form>
+                    </div>
+                </div>
+                <figcaption>Код 5.1 Интерактивен пример на output елемент.</figcaption>
+            </figure>
+            <p>Този елемент също помога и за достъпността на нашия сайт, тъй като много браузър маркират този елемент
+                като <code>aria-live</code>. Тоест при резултат, асистираща технология ще го обяви, без да е нужно
+                елемента да бъде фокусиран както би било по принцип.</p>
         </section>
+
         <section class="tagShowcaseContainer" id="tag-picture">
             <h1>6. picture</h1>
-            <p>Някой път може да ни се наложи един img елемент да се променя взависимост от условия като големина,
+            <p>Някой път може да ни се наложи един img елемент да се променя зависимост от условия като големина,
                 ориентация на екрана и т.н.
-                picture елементът ни предлага лесен начин да постигнем това вместо да се налага да използваме JavaScript
+                Picture елементът ни предлага лесен начин да постигнем това вместо да се налага да използваме JavaScript
                 например.
-                В picture слага нула или повече source> елемента, които сочат към различни изочници на снимката, и един
-                img>. Браузърът сам ще избере
+                В picture се слагат нула или повече <code>&lt;source></code> елемента, които сочат към различни изочници
+                на снимката, и един
+                <code>&lt;img></code>. Браузърът сам ще избере
                 кой източник е най-подходящ и ако не намери такъв или не поддържа picture то ще избере по подразбиране
-                това, което сме дали като img.
-                За различни източни може да задаваме условия използвайки type и media атрибутите. Type казва какъв тип е
+                това, което сме задали като img.
+                За различни източници може да задаваме условия използвайки type и media атрибутите. Type казва какъв тип
+                е
                 снимката, например png, jpg.
-                Media съдържа media query. Повече за тях може да прочетете <a
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries">тук</a>.
+                Media съдържа media query - Повече за тях може да прочетете <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries" target="_blank">тук</a>.
                 Някои от често срещаните media query-та се използват за широчина на екрана или ориентация на
-                устройството. Пример: Натиснете F12 и ако трябва намалете още ширината на екрана си. Котето ще стане на
-                по-късо коте при ширина под 1280 px.
+                устройството. Например <code>max-width: 720px</code>. Това ще означава, че този източник ще се използва
+                при екрани по-малки от 720 пиксела широчина.
             </p>
-            <picture class="example-images">
-                <source srcset="img/short-cat.png" media="(max-width: 1280px)">
-                <img src="img/cat.png" />
-            </picture>
-            <p>Аз съм снимал и двете котки :). </p>
+            <p>Пример: Натиснете F12 и ако трябва намалете още ширината на екрана си. Котето ще стане на
+                по-късо коте при ширина под 1280 px. Или променте кода на примера.
+            </p>
+
+            <figure>
+                <div class="codeExample editableCode">
+                    <div class="codeContent">
+                        <pre><code class="language-html" contenteditable="true">&lt;picture class="example-images">
+    &lt;source srcset="img/short-cat.png" media="(max-width: 1280px)">
+    &lt;img src="img/cat.png" />
+&lt;/picture></code></pre>
+                    </div>
+                    <div class="codeResult">
+                        <picture class="example-images">
+                            <source srcset="img/short-cat.png" media="(max-width: 1280px)">
+                            <img src="img/cat.png" />
+                        </picture>
+                    </div>
+                </div>
+                <figcaption>Код 6.1 Интерактивен пример на picture елемент. (Аз съм снимал и двете котки :) )
+                </figcaption>
+            </figure>
+
+            <p>Един интересен случай, в който може да използваме <code>&lt;picture></code> късае екрани с висока
+                резолюция и плъстност на пикселите. Самият атрибутът <code>srcset</code> на <code>source</code>
+                елементите може да приема няколко пътища към снимки. Форматът, в който се подавaт, е следният - раделени
+                със запетая имена плюс едно от двете: <br>- ширина последвана от символа 'w' (например
+                <code>300w</code>). <br>- описател на плъстността на пикселите последван от символа 'x' (например
+                <code>1.5x</code>).
+            </p>
+            <p>Това ни спестява сами да си пишем media query-та. Ето пример ако искаме да имаме една снимка при нормален
+                екран и снимка при екран с плътност 2 към 1 - <code>srcset="img.png, img-2x.png 2x"</code></p>
         </section>
         <section class="tagShowcaseContainer" id="tag-template">
             <h1>7. template</h1>
-            <p>&lt;temaplte> служи като механизъм за складиране на HTML код , който не искаме да бъде рендериран, но
-                може да бъде използвам в бъдеще използвайки JavaScript код.
-                Парсера минава през елементите на temaplate докато зарежда страницата, но не ги рендерира. Само се
-                уверява, че те са валидни. Можем да ни бъде полезно например, когато искаме да
-                попълним автоматично някаква таблица. Вместо да генерираме цялата структура на ред в JavaScript може да
-                си подготвим темплейт, на който само да променяме стойностите.
+            <p><code>&lt;templаte></code> служи като механизъм за складиране на HTML код, който не искаме да бъде
+                рендериран, но
+                може да бъде използван в бъдеще през JavaScript код.
+                Парсерът минава през елементите на temaplate докато зарежда страницата, но не ги рендерира. Само се
+                уверява, че те са валидни. Може да ни бъде полезно например, когато искаме да
+                попълним автоматично някаква таблица. Вместо да генерираме цялата структура на реда в JavaScript може да
+                си подготвим темплейт, на който само да променяме стойностите.</p>
+            <p>
                 В Chromium базираните браузъри template поддържа атрибут shadowroot като експериментална функционалност.
                 template със тази атрибут бива засечен от парсера и непосредствено след това бива приложен като
                 корен "сянка" на неговия елемент родител. Повече за т.нар. "Shadow Dom" може да прочетете <a
-                    href="https://web.dev/declarative-shadow-dom/">тук</a>. Пример за популиране на таблица:
-            <p>HTML: <br>
-            <pre><code class="language-html">&lt;table id=&quot;producttable&quot;&gt;
-&lt;thead&gt;
+                    href="https://web.dev/declarative-shadow-dom/" target="_blank">тук</a>. Пример за популиране на
+                таблица:
+            <p>HTML: </p>
+            <figure>
+                <pre><code class="language-html">&lt;table id=&quot;producttable&quot;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+        &lt;td&gt;Код&lt;/td&gt;
+        &lt;td&gt;Продукт&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;!-- Тук вкарваме данните от темплейта --&gt;
+    &lt;/tbody&gt;
+    &lt;/table&gt;
+    
+    &lt;template id=&quot;productrow&quot;&gt;
     &lt;tr&gt;
-    &lt;td&gt;UPC_Code&lt;/td&gt;
-    &lt;td&gt;Product_Name&lt;/td&gt;
+        &lt;td class=&quot;record&quot;&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
     &lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-    &lt;!-- Тук вкарваме данните от темплейта --&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+    &lt;/template&gt;</code></pre>
+                <figcaption>Код 7.1. Пример за template, HTML <a href="#tag-sources">[10]</a></figcaption>
+            </figure>
+            <p>JavaScript:</p>
+            <figure>
+                <pre><code class="language-javascript">const tbody = document.querySelector("tbody");
+const template = document.querySelector('#productrow');
 
-&lt;template id=&quot;productrow&quot;&gt;
-&lt;tr&gt;
-    &lt;td class=&quot;record&quot;&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/template&gt;</code></pre>
-            </p>
+// Клонираме темплейта, вкарваме нужните данни и го добавяме към таблицата
+const clone = template.content.cloneNode(true);
+let td = clone.querySelectorAll("td");
+td[0].textContent = "123";
+td[1].textContent = "Вафла Морена";
+
+tbody.appendChild(clone);</code></pre>
+                <figcaption>Код 7.2. Пример за template, JavaScript <a href="#tag-sources">[10]</a></figcaption>
+            </figure>
+            <p>Резултат:</p>
+            <figure>
+                <table id="producttable">
+                    <thead>
+                        <tr>
+                            <td>Код</td>
+                            <td>Продукт</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="record">123</td>
+                            <td>Вафла Морена</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <figcaption>Таб 7.1. Резултат от прилагане на темплейт <a href="#tag-sources">[10]</a></figcaption>
+            </figure>
+            <p>Една малко неудобнa подробност може да бъде това, че клонингите на <code>template</code> създадени със
+                <code>cloneNode</code> са от тип <code>DocumentFragment</code>. А за съжаление, тези фрагменти не
+                поддържат закачане на събития към тях. Ако искаме да използваме събития с темплейти трябва или да
+                клонираме фрагмента като нормален елемент, или да се обърнем към децата на темплейта (например да
+                обградим цялото съдържание на темплейта в div и да закачаме събитията за него).
             </p>
         </section>
+
         <section class="tagShowcaseContainer" id="tag-time">
             <h1>8. time</h1>
             <p>Този елемент се използва за да посочим някакъв спефицичен период от време във машинно разбираем език.
-                Това допринася за по одбри резултати при търсене както и дава възможност за някои специални
-                функционалности. Например може автоматично да доабвим събитие към календара на потребителя. Този елемент
+                Това допринася за по-добри резултати при търсене, както и дава възможност за някои специални
+                функционалности. Например, може автоматично да добавим събитие към календара на потребителя. Този
+                елемент
                 не бива да се използва за дати преди началото на Грегорианския календар. </p>
             <p>Специални атрибути на класа:</p>
-            </p>
             <ul>
-                <li><b>datetime</b> - с този атрибут посочваме времето в машинно разбираем формат. Ако атрибутът липсва
-                    то за
-                    негова стойност ще се вземе текстът, то тогава &lt;time> не може да има деца елементи, и за стойнсот
-                    на datetime ще се вземе текстът вътре във съдържанието на time.</li>
+                <li><b>datetime</b> - с този атрибут посочваме времето в машинно разбираем формат. Ако атрибутът липсва,
+                    тогава &lt;time> не може да има деца елементи, и за стойност
+                    на datetime ще се вземе текстът вътре в съдържанието на time.</li>
             </ul>
             <p>Пример:</p>
-            <p>&lt;p>Пример: Концертът започва в &lt;time datetime="2022-12-04T20:00:00">осем&lt;/time>&lt;/p></p>
-            <p>Концертът започва в <time datetime="2022-12-04T20:00:00">осем</time></p>
+            <figure>
+                <div class="codeExample editableCode">
+                    <div class="codeContent">
+                        <pre><code class="language-html" contenteditable="true">&lt;p>Концертът започва в 
+    &lt;time datetime="2022-12-04T20:00:00">осем&lt;/time>&lt;/p></code></pre>
+                    </div>
+                    <div class="codeResult">
+                        <p>Концертът започва в <time datetime="2022-12-04T20:00:00">осем</time></p>
+                    </div>
+                </div>
+                <figcaption>Код 8.1 Интерактивен пример на time елемент.</figcaption>
+            </figure>
         </section>
+
         <section class="tagShowcaseContainer" id="tag-video">
             <h1>9. video</h1>
-            <p>&lt;video> вмъква във страницаата медия плейър, който поддържа видеа. Може д абъде изпзолзвам и за аудио,
-                но за звуци вече видяхме, че има по-подходящ елемент. Подобно на аудио и тук имаме </p>
+            <p><code>&lt;video></code> вмъква в страницата медия плейър, който поддържа видеа. Може да бъде използван и
+                за аудио,
+                но за звуци вече видяхме, че има по-подходящ елемент. За настройването на този елемент се използват
+                множество атрибути. Съдържанието вътре в него почти няма значение. Използва се единствено като
+                заместител ако браузърът не поддържа видео.</p>
             <p>Специални атрибути на класа:</p>
-            </p>
             <ul>
-                <li>src - показва източника на видеото</li>
-                <li>autoplay - ако този атрибут е на лице видеото ще стартира веднага щом е възможно.</li>
-                <li>controls, controlslist - аналог на аудио елемента. Тук имаме контроли като възможност за зитегляне
+                <li><b>src</b> - показва източника на видеото. Подобно на <code>&lt;picture></code> елемента може да
+                    добавяме множество източничници използвайки source елементи.</li>
+                <li><b>autoplay</b> - ако този атрибут е на лице видеото ще стартира веднага щом е възможно.</li>
+                <li><b>controls, controlslist</b> - аналог на аудио елемента. Тук имаме контроли като възможност за
+                    изтегляне
                     на видеото (nodownload), пълен екран (nofullscreen) и други.</li>
-                <li>loop - ако е този атрибут е на лице, то видето ще се върти безкрайно в цикъл след като приключи.
+                <li><b>loop</b> - ако този атрибут е на лице, то видето ще се върти безкрайно в цикъл след като
+                    приключи.
                 </li>
-                <li>muted - този атрибут казва на video да пусне видеото без звук</li>
-                <li>width, height - ясни атрибути. Казват пирочината и височината на картината на видеото.</li>
+                <li><b>muted</b> - този атрибут казва на video да пусне видеото без звук</li>
+                <li><b>width, height</b> - Сравнително ясни атрибути. Указват широчината и височината на видеото.</li>
+                <li><b>preload</b> - напълно аналогично на preload за аудио елемент, с разликата че тук зарежда клип.
+                </li>
             </ul>
+
+            <p>Пример:</p>
+            <figure>
+                <div class="codeExample editableCode">
+                    <div class="codeContent">
+                        <pre><code class="language-html" contenteditable="true">&lt;video controls controlslist="nofullscreen" 
+    width="250px" src="media/bird.mp4">&lt;/video></code></pre>
+                    </div>
+                    <div class="codeResult">
+                        <video controls controlslist="nofullscreen" width="250px" src="media/bird.mp4"></video>
+                    </div>
+                </div>
+                <figcaption>Код 9.1 Интерактивен пример на video елемент. (Аз съм снимал пилето :) )</figcaption>
+            </figure>
+
+            <p>Освен възможността за настройване с атрибутите на елемента, <code>&lt;video></code> поддържа и множество
+                събития, котио може да прихващаме в JavaScript. Няма да изброявам тук всички защото са много, но ще
+                скицирам какви възможности ни предоставят. На първо място имаме събтия за естествени действия, които се
+                случват с едно видео - play, pause, ended, error, seeked, volumechanged. Освен тях други полезни са
+                такива, които ни дават информация за възможността видеото да бъде пуснато:
+            </p>
+
+            <ul>
+                <li><b>canplay</b> - означава, че видеото може да бъде пуснато, но не съсигурност в неговата пълното.
+                </li>
+                <li><b>canplaythrough</b> - вече може да бъде пусната изцяло, без да чакаме да зарежда.</li>
+                <li><b>loadeddata</b> - заредил е първият кадър от видеото.</li>
+                <li><b>loadedmetadata</b> - заредили са мета данните за клипа.</li>
+                <li><b>waiting</b> - клипа е спрял и изчаква данни.</li>
+                <li><b>playing</b> - клипа е започнал отново след като е чакал данни.</li>
+            </ul>
+
+            <p>
+                Със всички тези събития бихме могли да направим различни съобщения, които да се показват на потребителя
+                докато чака, уведомявайки го за проблемът. Или да го известим когаот клипа е напълно готов за да знае,
+                че ще може да го гледа без прекъсване. За пълен списък с всички събития може да видите страницата за
+                video на MDN <a href="#tag-sources">[11]</a>
+            </p>
         </section>
         <section class="tagShowcaseContainer" id="tag-wbr">
             <h1>10. wbr</h1>
-            <p>wbr представлява начин зауказване на възможност за пренасяне на дума. Представете си, че имаме някоя
+            <p><code>&lt;wbr></code> представлява начин за указване на възможност за пренасяне на дума. Представете си,
+                че имаме някоя
                 дълга
-                дума, която не се събира в някой елемент в браузъра. С wbr може да укажем точно на кои места да се
-                пренеса
-                на следващ ред думата вместо да разчитаме на бразуира, които може да я пренесе по-друг начин или изобщо
+                дума, която не се събира в неговия родител елемент. С wbr може да укажем точно на кои места да се
+                пренесе
+                на следващ ред думата вместо да разчитаме на браузъра, който може да я пренесе по друг начин или изобщо
                 да
-                не я. Почти същия ефект може да се симулира и с т.нар. меко тире. Това е специален, който не се
+                не я, взависимост от css-а. Почти същия ефект може да се симулира и с т.нар. меко тире. Това е специален
+                символ, който не се
                 рендерира на
-                страница. Разликата е, че освен че думата ще бъде пренесена, ще виждаме и символ тире. Пише се по
+                страницата. Разликата е, че освен че думата ще бъде пренесена, ще виждаме и символ тире. Пише се по
                 следния
-                начин: & shy; Този елемент няма Специални атрибути. Примерено използване: </p>
-            <div class="example-paragraphs">
-                <p>Непротивоконституционствувателствувайте</p>
-                <p>Непротиво<wbr>конституцион<wbr>ствувател<wbr>ствувайте</p>
-                <p>Непротиво&shy;конституцион&shy;ствувател&shy;ствувайте</p>
-            </div>
+                начин: <code>&amp;shy;</code>. Този елемент няма Специални атрибути.</p>
+
+            <p>Примерно използване: </p>
+            <figure>
+                <div class="codeExample">
+                    <div class="codeContent">
+                        <pre><code class="language-html">&lt;div class="example-paragraphs">
+    &lt;p>Непротивоконституционствувателствувайте&lt;/p>
+    &lt;p>Непротиво&lt;wbr>конституцион&lt;wbr>ствувател&lt;wbr>ствувайте&lt;/p>
+    &lt;p>Непротиво&amp;shy;конституцион&amp;shy;ствувател&amp;shy;ствувайте&lt;/p>
+&lt;/div></code></pre>
+                    </div>
+                    <div class="codeResult">
+                        <div class="example-paragraphs">
+                            <p>Непротивоконституционствувателствувайте</p>
+                            <p>Непротиво<wbr>конституцион<wbr>ствувател<wbr>ствувайте</p>
+                            <p>Непротиво&shy;конституцион&shy;ствувател&shy;ствувайте</p>
+                        </div>
+                    </div>
+                </div>
+                <figcaption>Код 10.1 Пример за wbr</figcaption>
+            </figure>
 
         </section>
-        <section class="tagShowcaseContainer" id="tag-future-development">
-            <h1>11. Доразвиване за следваща версия на реферата</h1>
-            <p>За следващата версия на реферата смятам да се фокусирам върху подобрение на следните точки:
-            <ol>
-                <li>Допълване на информацията за всички тагове и подобрение на останали - както се вижда няколко за
-                    няколко тага информацията е никаква или много оскъдна (video, template). Смятам да си ги попълня и
-                    разширя.</li>
-                <li>Подобрение на дизайна на реферата - искам да направя моя интерактивен реферат по-хубав. Също ще се
-                    фокусирам върху това да структурам информацията по-добре за да е по-лесно разбираеми. Както и да дам
-                    повече примери с код. Същи така да форматирам примерите с код така, че да изглеждат по добре.</li>
-                <li>Добавяне на още някой таг - ще добавя информация и за някои други тагове исвен тези от заглавието на
-                    темата</li>
-                <li>
-                    Бих искал да рефакторирам част от кода, тъй като на места не е идеален от бързане. Евентуално може
-                    би да добавя bootstrap.
-                </li>
-            </ol>
-            </p>
-        </section>
+
         <section class="tagShowcaseContainer" id="tag-combined">
             <h1>12. Комбиниран пример</h1>
             <blockquote>
-                Нека вземем всичко научено дотук и за забавление го комбинираме навъднъж. Моля пуснете аудиото отдолу за
+                Нека вземем всичко научено дотук и за забавление да го комбинираме навъднъж. Моля пуснете аудиото отдолу
+                за
                 да
                 започне шоуто.
             </blockquote>
@@ -354,7 +576,7 @@
                     </video>
                     <div id="show-captions">
                         <template id="show-caption-template">
-                            <p class="show-caption"><wbr></p>
+                            <p class="show-caption"><span class="marked-word"></span><wbr></p>
                         </template>
                     </div>
                 </div>
@@ -391,37 +613,73 @@
         </section>
 
         <section class="tagShowcaseContainer" id="tag-sources">
-            <h1>13. Източници</h1>
+            <h1>13. Източници и списъци</h1>
+            <p>Списък с примерен програмен код:</p>
+            <ul>
+                <li>Код 1.1 Интерактивен пример за progress елемент</li>
+                <li>Код 1.2 Пример за progress елемент с неопределан стойност</li>
+                <li>Код 1.3 Използване на progress като допълнителна семантика за достъпност</li>
+                <li>Код 2.1 Интерактивен пример на meter елемент.</li>
+                <li>Код 3.1 Интерактивен пример на blockquote елемент.</li>
+                <li>Код 4.1 Интерактивен пример на audio елемент.</li>
+                <li>Код 5.1 Интерактивен пример на output елемент.</li>
+                <li>Код 6.1 Интерактивен пример на picture елемент.</li>
+                <li>Код 7.1. Пример за template, HTML <a href="#tag-sources">[10]</a></li>
+                <li>Код 7.2. Пример за template, JavaScript <a href="#tag-sources">[10]</a></li>
+                <li>Код 8.1 Интерактивен пример на time елемент.</li>
+                <li>Код 9.1 Интерактивен пример на video елемент.</li>
+                <li>Код 10.1 Пример за wbr</li>
+            </ul>
+            <p>Списък с таблици:</p>
+            <ul>
+                <li>Таб 7.1. Резултат от прилагане на темплейт <a href="#tag-sources">[10]</a></li>
+            </ul>
+            <p>Източници:</p>
             <p>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress">[1]</a> The Progress
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress">[1]</a> The
+                Progress
                 Indicator element, MDN Web Docs, Nov 2 2022<br>
-                <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element">[2]</a> The meter
+                <a target="_blank"
+                    href="https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element">[2]</a> The meter
                 element, HTML Standard, MDN Web Docs, Nov 22 2022<br>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio">[3]</a> The Embed Audio
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio">[3]</a> The
+                Embed Audio
                 element, MDN Web Docs, Oct 31 2022<br>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">[4]</a> The Block
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">[4]</a>
+                The Block
                 Quotation element, MDN Web Docs, Nov 1 2022<br>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr">[5]</a> The Line Break
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr">[5]</a> The Line
+                Break
                 Opportunity element, MDN Web Docs, Nov 2 2022<br>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture">[6]</a> The Picture element,
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture">[6]</a> The
+                Picture element,
                 MDN Web Docs,
                 Nov 1 2022<br>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output">[7]</a> The Output element,
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output">[7]</a> The
+                Output element,
                 MDN Web Docs,
                 Nov 1 2022 <br>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements">[8]</a>
+                <a target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements">[8]</a>
                 HTMLFormElement.elements, MDN Web Docs, Sep 27 2022<br>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time">[9]</a> The (Date) Time
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time">[9]</a> The
+                (Date) Time
                 element,
                 MDN Web Docs, Nov 2 2022<br>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">[10]</a> The Content
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">[10]</a>
+                The Content
                 Template
                 element, MDN Web Docs, Nov 2 2022<br>
-                <a href="https://www.geeksforgeeks.org/how-to-disable-scrolling-temporarily-using-javascript/">[11]</a>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video">[11]</a> The
+                Video Embed
+                element, MDN Web Docs, Nov 11 2022<br>
+                <a target="_blank"
+                    href="https://www.geeksforgeeks.org/how-to-disable-scrolling-temporarily-using-javascript/">[12]</a>
                 How to disable scrolling temporarily using JavaScript ?, GeekForGeeks, 15 Nov 2022<br>
-                <a href="https://blog.logrocket.com/audio-visualizer-from-scratch-javascript/">[12]</a>
+                <a target="_blank" href="https://blog.logrocket.com/audio-visualizer-from-scratch-javascript/">[13]</a>
                 Write an audio visualizer from scratch with vanilla JavaScript, Iskander Samatov, May 12, 2022<br>
-                <a href="https://highlightjs.org/">[13]</a> За оцветяването на примерите с код е използвана библиотека
+                <a target="_blank" href="https://highlightjs.org/">[14]</a> За оцветяването на примерите с код е
+                използвана библиотека
                 highlight.js, Версия 11.7.0, 23 Nov 2022
             </p>
         </section>
